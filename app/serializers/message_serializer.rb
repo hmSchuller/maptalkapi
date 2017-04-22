@@ -1,3 +1,17 @@
+# == Schema Information
+#
+# Table name: messages
+#
+#  id           :integer          not null, primary key
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  lat          :float            not null
+#  lng          :float            not null
+#  text         :string           not null
+#  author       :string           not null
+#  message_type :string           default("comment"), not null
+#
+
 class MessageSerializer < ActiveModel::Serializer
-  attributes :id, :body, :lat, :lng, :author
+  attributes :id, :text, :lat, :lng, :author
 end

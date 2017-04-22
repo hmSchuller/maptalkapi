@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422112916) do
+ActiveRecord::Schema.define(version: 20170422144921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
   create_table "messages", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.float    "lat",        null: false
-    t.float    "lng",        null: false
-    t.string   "text",       null: false
-    t.string   "author",     null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.float    "lat",                              null: false
+    t.float    "lng",                              null: false
+    t.string   "text",                             null: false
+    t.string   "author",                           null: false
+    t.string   "message_type", default: "comment", null: false
   end
 
 end
