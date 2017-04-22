@@ -1,4 +1,6 @@
 class Api::V1::MessagesController < ApplicationController
+  before_action :set_headers
+
   def index
     meters = ((params[:m] || 20).to_f * 0.000621371).to_f
     lat = (params[:lat] || 49.000793).to_f
@@ -19,7 +21,15 @@ class Api::V1::MessagesController < ApplicationController
   end
 
 
+
+
   private
+  def set_headers
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, GET, OPTIONS'
+    headers['Access-Control-Request-Method'] = '*'
+    headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  end
 
   def message_params
     params.require(:message).permit([:lat, :lng, :text, :author]).to_h
