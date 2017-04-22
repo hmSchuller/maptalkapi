@@ -1,15 +1,11 @@
 class Api::V1::MessagesController < ApplicationController
-  respond_to :json
-
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   def index
-    @messages = Message.all
-    respond_with @messages
-  end
-
-  def show
-    respond_with @message
+    meters = ((params[:m] || 20).to_f * 0.000621371).to_f
+    lat = (params[:lat] || 49.000793).to_f
+    lng = (params[:lng] || 12.095634).to_f
+    @messages = Message.within(meters, origin: [lat, lng])
+    render json: @messages.to_json, each_serializer: MessageSerializer
   end
 
   def create
@@ -20,11 +16,8 @@ class Api::V1::MessagesController < ApplicationController
 
 
   private
-    def set_message
-      @message = Message.find(params[:id])
-    end
 
-    def message_params
-      params.fetch(:message, {})
-    end
+  def message_params
+    params.fetch(:message, [:lat, :lng, :text, :author])
+  end
 end

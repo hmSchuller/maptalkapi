@@ -4,11 +4,13 @@ require File.expand_path("spec/factories.rb")
 
 namespace :seed do
   task all: :environment do
-    (rand(50) + 150).times do
+    (rand(10) + 10).times do
+      message = FactoryGirl.create(:message, author: 'Der Solleder', text: 'Ewald stinkt')
+      message = FactoryGirl.create(:message, author: 'Sveti', text: 'Ewalds Hose mieft')
+
       message = FactoryGirl.create(:message, author: 'hm Schuller')
       message = FactoryGirl.create(:message, author: 'Der Solleder')
       message = FactoryGirl.create(:message, author: 'Xanthras')
-      message = FactoryGirl.create(:message, author: 'Sveti')
       message = FactoryGirl.create(:message, author: 'Korbinian')
     end
   end

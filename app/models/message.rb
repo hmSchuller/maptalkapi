@@ -12,6 +12,8 @@
 #
 
 class Message < ActiveRecord::Base
+  acts_as_mappable
+
   validates :lat, presence: true
   validates :lng, presence: true
   validates :text, presence: true, length: {minimum: 3, maximum: 160}
