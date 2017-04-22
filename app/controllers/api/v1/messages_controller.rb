@@ -6,7 +6,7 @@ class Api::V1::MessagesController < ApplicationController
     message_type = (params[:type] || 'comment').to_s
     @m_scope = Message.where(message_type: message_type)
     @messages = @m_scope.within(meters, origin: [lat, lng])
-    render json: @messages.to_json, each_serializer: ::MessageSerializer
+    render json: @messages, each_serializer: ::MessageSerializer
   end
 
   def create
