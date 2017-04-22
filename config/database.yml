@@ -1,0 +1,31 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
+  database: <%= ENV['POSTGRESQL_DATABASE'] %>
+  host:     <%= ENV['POSTGRESQL_ADDRESS'] %>
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
+  database: <%= ENV['POSTGRESQL_DATABASE_TEST'] %>
+  host:     <%= ENV['POSTGRESQL_ADDRESS'] %>
+
+staging:
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
+  database: <%= ENV['POSTGRESQL_DATABASE'] %>
+  host:     <%= ENV['POSTGRESQL_ADDRESS']  %>
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
+  database: <%= ENV['POSTGRESQL_DATABASE'] %>
+  host:     <%= ENV['POSTGRESQL_ADDRESS']  %>
