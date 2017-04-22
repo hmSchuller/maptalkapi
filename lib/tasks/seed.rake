@@ -4,7 +4,6 @@ require File.expand_path("spec/factories.rb")
 
 namespace :seed do
   task all: :environment do
-    return unless Rails.env.development?
     (rand(50) + 150).times do
       message = FactoryGirl.create(:message, author: 'hm Schuller')
       message = FactoryGirl.create(:message, author: 'Der Solleder')
