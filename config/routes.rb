@@ -4,4 +4,6 @@ Rails.application.routes.draw do
       resources :messages, only: [:index, :create, :show], format: :json
     end
   end
+
+  root to: redirect('/api/v1/messages.json')
 end
