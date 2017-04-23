@@ -22,6 +22,7 @@ class Api::V1::MessagesController < ApplicationController
     else
       render json: @message.errors, status: 422
     end
+    Message.clean(@message)
   end
 
 
