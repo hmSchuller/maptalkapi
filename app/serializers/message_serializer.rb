@@ -13,7 +13,7 @@
 #
 
 class MessageSerializer < ActiveModel::Serializer
-  attributes :id, :text, :lat, :lng, :author, :type
+  attributes :id, :text, :lat, :lng, :author, :type, :created_at
 
 
   def type
