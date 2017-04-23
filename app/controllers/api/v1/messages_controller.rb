@@ -5,8 +5,12 @@ class Api::V1::MessagesController < ApplicationController
     meters = ((params[:m] || 20).to_f * 0.000621371).to_f
     lat = (params[:lat] || 49.000793).to_f
     lng = (params[:lng] || 12.095634).to_f
-    message_type = (params[:type] || 'comment').to_s
-    @m_scope = Message.where(message_type: message_type)
+    message_type = (params[:type] || '').to_s
+    if message_type.present? && !message_type.blank?
+      @m_scope = Message.where(message_type: message_type)
+    else
+      @m_scope = Message
+    end
     @messages = @m_scope.within(meters, origin: [lat, lng])
     render json: @messages, each_serializer: ::MessageSerializer
   end
