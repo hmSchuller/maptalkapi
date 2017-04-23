@@ -16,7 +16,7 @@ class Api::V1::MessagesController < ApplicationController
     if @message.save
       render json: @message, serializer: ::MessageSerializer
     else
-      render json: { errors: { message: "invalid" }}, status: 422
+      render json: @message.errors, status: 422
     end
   end
 
@@ -32,6 +32,11 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def message_params
-    params.require(:message).permit([:lat, :lng, :text, :author]).to_h
+    prms = params.require(:message).permit([:lat, :lng, :text, :author, :type]).to_h
+    if prms[:type].present?
+      prms[:message_type] = prms[:type]
+      prms.delete(:type)
+    end
+    prms
   end
 end

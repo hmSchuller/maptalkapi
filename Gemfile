@@ -35,5 +35,7 @@ gem "database_cleaner"
 # geolocation magic
 gem 'geokit-rails'
 
-gem 'better_errors'
-gem 'binding_of_caller'
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
